@@ -1,29 +1,9 @@
-'use strict';
-class StringBuilder {
-  #value;
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
-  getValue() {
-    return this.#value;
-  }
-  padEnd(str) {
-    this.#value += str;
-  }
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-  padBoth(str) {
-    this.padStart(str);
-    this.padEnd(str);
-  }
-}
+const inputName = document.getElementById('name-input');
+const outputName = document.getElementById('name-output');
 
-const builder = new StringBuilder('.');
-console.log(builder.getValue()); // "."
-builder.padStart('^');
-console.log(builder.getValue()); // "^."
-builder.padEnd('^');
-console.log(builder.getValue()); // "^.^"
-builder.padBoth('=');
-console.log(builder.getValue()); // "=^.^="
+const placeholder = some => {
+  outputName.textContent =
+    inputName.value !== ' ' ? some.currentTarget.value : 'Anonymous';
+};
+
+inputName.addEventListener('input', placeholder);
